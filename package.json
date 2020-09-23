@@ -1,0 +1,30 @@
+{
+  "name": "vote-your-favorite-sololearner_oauth",
+  "version": "1.0.0",
+  "description": "Sololearn Voting System",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdulMoqueet/vote-your-favorite-sololearner_oauth.git"
+  },
+  "author": "Abdul Moqueet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbdulMoqueet/vote-your-favorite-sololearner_oauth/issues"
+  },
+  "homepage": "https://github.com/AbdulMoqueet/vote-your-favorite-sololearner_oauth#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.6",
+    "mongoose-findorcreate": "^3.0.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "validator": "^13.1.17"
+  }
+}
