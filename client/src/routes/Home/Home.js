@@ -10,7 +10,7 @@ const Home = () => {
     useEffect(() => {
 
         axios
-          .get(process.env.REACT_APP_API_URL+"/api/contestants")
+          .get("api/contestants")
           .then(res => {
               console.log(res.data.contestants);
               setContestants(res.data.contestants);

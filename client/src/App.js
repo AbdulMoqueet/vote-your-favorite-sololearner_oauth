@@ -20,7 +20,7 @@ function App() {
     setTimeout(() => {
       console.log(process.env.REACT_APP_API_URL);
       axios
-        .get(process.env.REACT_APP_API_URL+'/api/user')
+        .get('api/user')
         .then(res => {
           console.log(res);
           setAppContext({ ...appContext, isLoading: false, isLogin: true })
