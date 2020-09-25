@@ -95,9 +95,9 @@ mongoose
 //         console.log('saved...');
 //     });
 
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./client/build'));
-}
+// }
 
 // app.use((req, res) => {
 //     res.status(404).send('404 Not Found!');
