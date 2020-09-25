@@ -1,11 +1,16 @@
 import React from 'react';
 
 const List = (props) => {
+
+    const profileUrl = `https://www.sololearn.com/Profile/${props.soloId}/?ref=app`;
+    const profilePic = `https://api.sololearn.com/Uploads/Avatars/${props.soloId}.jpg`;
+
+
     return (
         <div className="list-container__list mt-4">
 
             <img className="list-container__dp" 
-            src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg" 
+            src={profilePic}
             alt="sololearner_dp" />
 
             <div className="list-container__info-holder">
@@ -14,7 +19,7 @@ const List = (props) => {
             </div>
 
             <div className="list-container__more-btn">
-                <i class="ri-arrow-right-s-line"></i>
+                <i className="ri-arrow-right-s-line"></i>
             </div>
 
         </div>

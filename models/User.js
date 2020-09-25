@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
-const findorCreate = require('mongoose-findorcreate');
 
 const userSchema = new mongoose.Schema({
-    googleId:{
+    googleId: {
         type: String,
         required: [true, 'Please Enter Email'],
         unique: true
+    },
+    dp: {
+        type: String
     },
     name: {
         type: String,
@@ -20,13 +22,21 @@ const userSchema = new mongoose.Schema({
         validate: [isEmail, 'Please Enter a valid Email']
     },
     voted: {
-        type:Boolean,
+        type: Boolean,
         default: false
+    },
+    votedFor: {
+        type: String,
+        default: ''
+    },
+    createdAt: {
+        type: String
+    },
+    lastLogin: {
+        type: String
     }
 });
 
-userSchema.plugin(findorCreate);
-
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
