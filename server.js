@@ -5,7 +5,7 @@ require('dotenv').config();
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const apiRoutes = require('./routes/apiRoutes');
-// const Contestant = require('./models/Contestant');
+const Contestant = require('./models/Contestant');
 
 const app = express();
 
@@ -28,10 +28,6 @@ const authRoutes = require('./routes/authRoutes');
 
 app.use(authRoutes);
 app.use(apiRoutes);
-
-app.use((req, res) => {
-    res.status(404).send('404 Not Found!');
-});
 
 // connecting to mongodb
 mongoose
@@ -98,6 +94,14 @@ mongoose
 //         else
 //         console.log('saved...');
 //     });
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('./client/build'));
+}
+
+app.use((req, res) => {
+    res.status(404).send('404 Not Found!');
+});
 
 app.listen(process.env.PORT || 5000, console.log(
     `${process.env.NODE_ENV === 'production' ? 'Production' : 'Development'} Server started on port ${process.env.PORT || 5000}`
