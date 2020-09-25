@@ -99,9 +99,9 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./client/build'));
 }
 
-app.use((req, res) => {
-    res.status(404).send('404 Not Found!');
-});
+// app.use((req, res) => {
+//     res.status(404).send('404 Not Found!');
+// });
 
 app.listen(process.env.PORT || 5000, console.log(
     `${process.env.NODE_ENV === 'production' ? 'Production' : 'Development'} Server started on port ${process.env.PORT || 5000}`
