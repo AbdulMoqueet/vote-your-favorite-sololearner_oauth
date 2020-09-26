@@ -36,12 +36,25 @@
       align-items: center;
     }
 
+    .mitali{
+      transform: translate(-1rem);
+      background: #000;
+      width: 100px;
+      height: 100px;
+    }
+
+    &__img-box{
+      overflow: hidden;
+      height: 70px;
+      width: 70px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      margin-right: 1rem;
+    }
+
     &__dp {
       height: 70px;
       width: 70px;
-      margin-right: 1rem;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
     }
 
     &__name {

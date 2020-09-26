@@ -21,10 +21,9 @@ const googleStrategy = new GoogleStrategy({
         const existingUser = await User.findOne({googleId});
 
         if(existingUser){
-            const finalUser = await User.findByIdAndUpdate(existingUser._id, {lastLogin: getDateTime()}, {new: true});
-            done(null, finalUser);
+            done(null, existingUser);
         }else{
-            const user = await User.create({ googleId, name, email, dp, createdAt, lastLogin: createdAt });
+            const user = await User.create({ googleId, name, email, dp, createdAt });
             done(null, user);
         }
     }

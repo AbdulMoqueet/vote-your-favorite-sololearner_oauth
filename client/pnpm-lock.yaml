@@ -8,6 +8,7 @@ dependencies:
   react-dom: 16.13.1_react@16.13.1
   react-router-dom: 5.2.0_react@16.13.1
   react-scripts: 3.4.3_node-sass@4.14.1
+  react-scroll: 1.8.1_react-dom@16.13.1+react@16.13.1
   react-toastify: 6.0.8_react-dom@16.13.1+react@16.13.1
 lockfileVersion: 5.1
 packages:
@@ -7208,6 +7209,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
+  /lodash.throttle/4.1.1:
+    dev: false
+    resolution:
+      integrity: sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
   /lodash.uniq/4.5.0:
     dev: false
     resolution:
@@ -9614,6 +9619,18 @@ packages:
         optional: true
     resolution:
       integrity: sha512-oSnoWmii/iKdeQiwaO6map1lUaZLmG0xIUyb/HwCVFLT7gNbj8JZ9RmpvMCZ4fB98ZUMRfNmp/ft8uy/xD1RLA==
+  /react-scroll/1.8.1_react-dom@16.13.1+react@16.13.1:
+    dependencies:
+      lodash.throttle: 4.1.1
+      prop-types: 15.7.2
+      react: 16.13.1
+      react-dom: 16.13.1_react@16.13.1
+    dev: false
+    peerDependencies:
+      react: ^15.5.4 || ^16.0.0
+      react-dom: ^15.5.4 || ^16.0.0
+    resolution:
+      integrity: sha512-UAKmawFHn+c7x/DoXuHqOsQ5xwNk2Dxv7vP8Ft41K2hglPWkshcSos0tMTr8704UkFqImoUGzMTdN4vuZXoqbw==
   /react-toastify/6.0.8_react-dom@16.13.1+react@16.13.1:
     dependencies:
       classnames: 2.2.6
@@ -12033,4 +12050,5 @@ specifiers:
   react-dom: ^16.13.1
   react-router-dom: ^5.2.0
   react-scripts: 3.4.3
+  react-scroll: ^1.8.1
   react-toastify: ^6.0.8

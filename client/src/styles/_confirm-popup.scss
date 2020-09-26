@@ -1,0 +1,54 @@
+.confirm-popup {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  
+  &__box {
+    background: #fff;
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    color: $grey-dark;
+  }
+
+  &__msg{
+    font-size: 14px;
+    color: $grey-dark;
+  }
+
+  &__button-holder{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__btn{
+    background: $theme;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__back{
+    background: #e74c3c;
+    margin-right: 1.5rem;
+  }
+
+  &__confirm{
+    margin-right: 2rem;
+  }
+
+}

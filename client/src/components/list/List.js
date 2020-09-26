@@ -7,11 +7,17 @@ const List = (props) => {
 
 
     return (
-        <div className="list-container__list mt-4">
+        <div className="list-container__list mt-4" onClick={props.click}>
 
-            <img className="list-container__dp" 
-            src={profilePic}
-            alt="sololearner_dp" />
+            <div className="list-container__img-box">
+
+                <img className={`list-container__dp${props.name.toLowerCase() === 'mitali'? " "+props.name.toLowerCase():''}`}
+                    src={profilePic}
+                    alt="sololearner_dp" />
+
+            </div>
+
+
 
             <div className="list-container__info-holder">
                 <div className="list-container__name">{props.name}</div>

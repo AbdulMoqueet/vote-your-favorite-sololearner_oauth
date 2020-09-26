@@ -18,16 +18,13 @@ function App() {
     setAppContext({ ...appContext, isLoading: true });
 
     setTimeout(() => {
-      console.log(process.env.REACT_APP_API_URL);
       axios
-        .get('api/user')
+        .get('/api/user')
         .then(res => {
-          console.log(res);
           setAppContext({ ...appContext, isLoading: false, isLogin: true })
         })
         .catch(err => {
-          console.log('catch block');
-          console.log(err.response);
+          console.log(err);
           setAppContext({ ...appContext, isLoading: false, isLogin: false })
         });
     }, 100);
@@ -36,7 +33,7 @@ function App() {
 
 
   return (
-    
+
     <div className="App">
       <Router>
         <ToastContainer />

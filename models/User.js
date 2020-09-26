@@ -31,9 +31,6 @@ const userSchema = new mongoose.Schema({
     },
     createdAt: {
         type: String
-    },
-    lastLogin: {
-        type: String
     }
 });
 
