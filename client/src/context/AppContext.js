@@ -6,7 +6,8 @@ export const AppContextProvider = props => {
 
     const [appContext, setAppContext] = useState({
         isLoading: false,
-        isLogin: false
+        isLogin: false,
+        user: {}
     });
 
     return (

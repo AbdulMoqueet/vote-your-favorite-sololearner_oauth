@@ -1,8 +1,18 @@
 const Contestant = require('../models/Contestant');
+const User = require('../models/User');
+const { getDateTime } = require('../utils/utils');
+
 
 module.exports.userGet = (req, res) => {
   if (req.user) {
-    return res.json({ message: 'User Is Login' });
+    return res.json({
+      user: {
+        name: req.user.name,
+        email: req.user.email,
+        dp: req.user.dp,
+        votedFor: req.user.votedFor
+      }
+    });
   } else {
     return res.status(400).json({ message: 'Not Login' });
   }
@@ -34,24 +44,39 @@ module.exports.votePost = async (req, res) => {
 
   if (req.user) {
 
+    // if (!req.user.votedFor) {
+
     const { _id } = req.body;
 
     coder = await Contestant.findById(_id);
     const votes = ++coder.votes;
-    console.log(votes);
+    const { votedBy } = coder;
 
-    Contestant
-      .updateOne({ _id }, { votes })
-      .then(result => console.log(result));
 
-    return res.json({ message: 'Voted Successfully' });
+    const user = await User.findByIdAndUpdate({ _id: req.user._id }, { votedFor: coder.name, votedAt: getDateTime() }, { new: true });
+
+
+    votedBy.push({
+      _id: user._id,
+      googleId: user.googleId,
+      name: user.name,
+      email: user.email,
+      dp: user.dp,
+      votedAt: user.votedAt
+    });
+
+
+    const result = await Contestant.updateOne({ _id }, { votes, votedBy });
+    console.log(result);
+
+    res.redirect('/api/contestants');
+
+    // } else {
+    //   return res.status(400).json({ message: 'Voted Already'});
+    // }
 
   } else {
     return res.status(400).json({ message: 'Not Login' });
   }
-
-
-
-
 
 }

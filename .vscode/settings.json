@@ -3,6 +3,7 @@
         "Mondodb",
         "Sololearner",
         "findorcreate",
+        "signout",
         "toastify"
     ]
 }

@@ -7,30 +7,37 @@
 @import "media_queries";
 
 // Global Styles
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    background: #faf7f7;
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #faf7f7;
 }
 
 .sigInWithGoogle {
-    background: #fff;
-    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
-    margin: 2rem 0;
-    padding: 12px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    font-size: 14px;
+  background: #fff;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 14px;
 
-    img {
-      width: 25px;
-      margin-right: 1rem;
-    }
-
+  img {
+    width: 25px;
+    margin-right: 1rem;
   }
+}
+
+.Toastify__toast {
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}

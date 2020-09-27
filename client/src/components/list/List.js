@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const List = (props) => {
 
@@ -11,7 +12,7 @@ const List = (props) => {
 
             <div className="list-container__img-box">
 
-                <img className={`list-container__dp${props.name.toLowerCase() === 'mitali'? " "+props.name.toLowerCase():''}`}
+                <img className={`list-container__dp${props.name.toLowerCase() === 'mitali' ? " " + props.name.toLowerCase() : ''}`}
                     src={profilePic}
                     alt="sololearner_dp" />
 
@@ -24,9 +25,9 @@ const List = (props) => {
                 <div className="list-container__votes">{props.vote} votes</div>
             </div>
 
-            <div className="list-container__more-btn">
+            <Link to='/details' className="list-container__more-btn">
                 <i className="ri-arrow-right-s-line"></i>
-            </div>
+            </Link>
 
         </div>
     );

@@ -21,16 +21,16 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         validate: [isEmail, 'Please Enter a valid Email']
     },
-    voted: {
-        type: Boolean,
-        default: false
-    },
     votedFor: {
         type: String,
         default: ''
     },
     createdAt: {
         type: String
+    },
+    votedAt:{
+        type: String,
+        default: ''
     }
 });
 

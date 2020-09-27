@@ -6,6 +6,12 @@ const { contestantGet, userGet, votePost } = require('../controllers/apiControll
 const router = Router();
 
 router.get("/api/user", userGet);
+router.get("/api/user/signout", (req, res) => {
+    req.logout();
+    console.log('logout');
+    return res.json({ message: 'Logged Out' });
+});
+
 
 router.get("/api/contestants", contestantGet);
 

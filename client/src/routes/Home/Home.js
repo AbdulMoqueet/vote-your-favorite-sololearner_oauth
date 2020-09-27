@@ -7,7 +7,11 @@ import AlertPopup from "../../components/popup/AlertPopup";
 import { AppContext } from "../../context/AppContext";
 
 import { animateScroll } from 'react-scroll';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import defaultUserDp from "../../resources/default_user.png";
 
+let selectedIndex = 0;
 
 const Home = () => {
 
@@ -23,17 +27,17 @@ const Home = () => {
         isOpen: false,
         title: '',
         msg: '',
-        scroll:false
+        scroll: false
     });
 
-    const closeAlertPopup = (scroll) => {
+    const closeAlertPopup = () => {
         document.body.style.overflow = 'visible';
         setAlertPopup({
             ...alertPopup,
             isOpen: false
         });
 
-        if (scroll)
+        if (alertPopup.scroll)
             animateScroll.scrollToBottom();
 
     }
@@ -47,21 +51,14 @@ const Home = () => {
     }
 
     useEffect(() => {
-
-        axios
-            .get("/api/contestants")
-            .then(res => {
-                setContestants(res.data.contestants);
-            })
-            .catch(err => console.error(err));
-
+        updateList();
     }, []);
 
     const listSelected = (e) => {
 
         document.body.style.overflow = 'hidden';
 
-        if(!appContext.isLogin){
+        if (!appContext.isLogin) {
             setAlertPopup({
                 isOpen: true,
                 title: 'You are not login',
@@ -74,13 +71,20 @@ const Home = () => {
 
         const coderName = e.currentTarget.children[1].children[0].textContent;
 
-        const selectedIndex = contestants.findIndex(coder => coder.name === coderName);
+        selectedIndex = contestants.findIndex(coder => coder.name === coderName);
         const coder = contestants[selectedIndex];
 
         setConfirmPopup({
             isOpen: true,
             coder
         });
+    }
+
+    const updateList = () => {
+        axios
+            .get("/api/contestants")
+            .then(res => setContestants(res.data.contestants))
+            .catch(err => console.error(err));
     }
 
     const submitVote = (_id) => {
@@ -93,12 +97,27 @@ const Home = () => {
 
         axios
             .post("/api/vote", { _id })
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(err => console.error(err));
+            .then((res) => {
 
-        console.log(_id);
+                setContestants(res.data.contestants);
+
+                toast.success(`Voted for: ${confirmPopup.coder.name} done`);
+
+            })
+            .catch(err => {
+                setAlertPopup({
+                    isOpen: true,
+                    title: 'You have voted already',
+                    msg: `You have voted already for: ${err.response.data.votedFor} \n\n You can only vote once.`,
+                    scroll: false
+                });
+            })
+            .finally(() => {
+                setAppContext({
+                    ...appContext,
+                    isLoading: false
+                });
+            });
 
     }
 
@@ -121,7 +140,17 @@ const Home = () => {
                 <div className="home__side-theme"></div>
 
                 <div className="top mt-3">
-                    <div className="top__title">Vote Your Fav <span>SoloLearner</span></div>
+
+                    <div className="top-login">
+                        <div className="top-login__title">Vote Your Fav <span>SoloLearner</span></div>
+
+                        <div className="top-login__profile" onClick={animateScroll.scrollToBottom}>
+                            <img src={appContext.isLogin ? appContext.user.dp : defaultUserDp}
+                                alt="user_dp" />
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <div className="list-container">

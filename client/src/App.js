@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./routes/Home/Home";
+import Details from "./routes/Details/Details";
 import Loader from "./components/loader/Loader";
 import Footer from "./components/footer/Footer";
 import { AppContext } from "./context/AppContext";
@@ -17,17 +18,16 @@ function App() {
 
     setAppContext({ ...appContext, isLoading: true });
 
-    setTimeout(() => {
-      axios
-        .get('/api/user')
-        .then(res => {
-          setAppContext({ ...appContext, isLoading: false, isLogin: true })
-        })
-        .catch(err => {
-          console.log(err);
-          setAppContext({ ...appContext, isLoading: false, isLogin: false })
-        });
-    }, 100);
+    axios
+      .get('/api/user')
+      .then(res => {
+        console.log(res.data);
+        setAppContext({ ...appContext, isLoading: false, isLogin: true, user: res.data.user })
+      })
+      .catch(err => {
+        console.log(err);
+        setAppContext({ ...appContext, isLoading: false, isLogin: false })
+      });
 
   }, []);
 
@@ -41,6 +41,7 @@ function App() {
         <Switch>
 
           <Route path="/" exact render={(props) => <Home {...props} />} />
+          <Route path="/details" exact render={(props) => <Details {...props} />} />
 
         </Switch>
         <Footer />
