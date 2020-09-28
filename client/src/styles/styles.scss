@@ -17,6 +17,9 @@
 body {
   font-family: "Montserrat", sans-serif;
   background: #faf7f7;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 .sigInWithGoogle {

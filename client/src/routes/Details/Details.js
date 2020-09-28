@@ -13,6 +13,8 @@ const Details = (props) => {
 
     useEffect(() => {
 
+        document.body.style.overflow = 'visible';
+
         setAppContext({
             ...appContext,
             isLoading: true
