@@ -103,8 +103,6 @@ module.exports.upVotesPost = async (req, res) => {
 
     const { votedBy } = coder;
 
-    console.log(votedBy);
-
     return res.json({ votedBy: votedBy, name: coder.name });
   } else {
     return res.status(400).json({ message: 'No id provided' });

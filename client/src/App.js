@@ -24,7 +24,6 @@ function App() {
         setAppContext({ ...appContext, isLoading: false, isLogin: true, user: res.data.user })
       })
       .catch(err => {
-        console.log(err);
         setAppContext({ ...appContext, isLoading: false, isLogin: false })
       });
 
@@ -41,6 +40,7 @@ function App() {
 
           <Route path="/" exact>
             <Home />
+            <Footer />
           </Route>
 
           <Route
@@ -48,7 +48,6 @@ function App() {
               render={(props) => <Details {...props} />} />
           
         </Switch>
-        <Footer />
       </Router>
     </div>
   );

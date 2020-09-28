@@ -69,6 +69,7 @@ const Home = () => {
     }
 
     useEffect(() => {
+        console.log('Home Effect');
         document.body.style.overflow = 'visible';
         updateList();
     }, []);

@@ -3,6 +3,7 @@ import VotedByList from "../../components/list/VoteByList";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import axios from "axios";
+import Footer from "../../components/footer/Footer";
 
 const Details = (props) => {
 
@@ -13,6 +14,7 @@ const Details = (props) => {
 
     useEffect(() => {
 
+        console.log('Details Effect');
         document.body.style.overflow = 'visible';
 
         setAppContext({
@@ -42,8 +44,10 @@ const Details = (props) => {
             .finally(() => {
                 setLoading(false);
             });
-    }, []);
 
+
+
+    }, []);
 
     return (
         <div className="details">
@@ -64,10 +68,12 @@ const Details = (props) => {
                     at={voter.votedAt} />)}
 
                 {votedBy.length === 0 ? <div className="votes__no-votes">
-                    {loading ? 'Loading...' : <React.Fragment> No Votes Yet :/ <br /> Be the first one to vote ^_^ </React.Fragment>}
+                    {loading ? '' : <React.Fragment> No Votes Yet :/ <br /> Be the first one to vote ^_^ </React.Fragment>}
                 </div> : null}
 
             </div>
+
+            <Footer />
 
         </div>
     )

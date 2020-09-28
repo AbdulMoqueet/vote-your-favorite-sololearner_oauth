@@ -6,6 +6,7 @@ dependencies:
   node-sass: 4.14.1
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
+  react-image: 4.0.3_react-dom@16.13.1+react@16.13.1
   react-router-dom: 5.2.0_react@16.13.1
   react-scripts: 3.4.3_node-sass@4.14.1
   react-scroll: 1.8.1_react-dom@16.13.1+react@16.13.1
@@ -9514,6 +9515,17 @@ packages:
     dev: false
     resolution:
       integrity: sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
+  /react-image/4.0.3_react-dom@16.13.1+react@16.13.1:
+    dependencies:
+      react: 16.13.1
+      react-dom: 16.13.1_react@16.13.1
+    dev: false
+    peerDependencies:
+      '@babel/runtime': '>=7'
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    resolution:
+      integrity: sha512-19MUK9u1qaw9xys8XEsVkSpVhHctEBUeYFvrLTe1PN+4w5Co13AN2WA7xtBshPM6SthsOj77SlDrEAeOaJpf7g==
   /react-is/16.13.1:
     dev: false
     resolution:
@@ -12048,6 +12060,7 @@ specifiers:
   node-sass: ^4.14.1
   react: ^16.13.1
   react-dom: ^16.13.1
+  react-image: ^4.0.3
   react-router-dom: ^5.2.0
   react-scripts: 3.4.3
   react-scroll: ^1.8.1
