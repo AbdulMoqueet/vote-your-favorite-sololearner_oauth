@@ -18,8 +18,7 @@ module.exports.userGet = (req, res) => {
   }
 }
 
-
-module.exports.contestantGet = async (req, res) => {
+const getContestant = async () => {
 
   function compare(a, b) {
     if (a.votes > b.votes) {
@@ -33,8 +32,12 @@ module.exports.contestantGet = async (req, res) => {
 
 
   const contestants = await Contestant.find().sort({ "name": 1 });
-
   contestants.sort(compare);
+  return contestants;
+}
+
+module.exports.contestantGet = async (req, res) => {
+  const contestants = await getContestant();
 
   return res.json({ contestants });
 
@@ -44,7 +47,7 @@ module.exports.votePost = async (req, res) => {
 
   if (req.user) {
 
-    // if (!req.user.votedFor) {
+    if (!req.user.votedFor) {
 
     const { _id } = req.body;
 
@@ -67,13 +70,22 @@ module.exports.votePost = async (req, res) => {
 
 
     const result = await Contestant.updateOne({ _id }, { votes, votedBy });
-    console.log(result);
 
-    res.redirect('/api/contestants');
+    const contestants = await getContestant();
 
-    // } else {
-    //   return res.status(400).json({ message: 'Voted Already'});
-    // }
+    const myUser = {
+      name: user.name,
+      email: user.email,
+      dp: user.dp,
+      votedFor: user.votedFor
+    }
+
+
+    return res.json({ contestants, user: myUser });
+
+    } else {
+      return res.status(400).json({ votedFor: req.user.votedFor});
+    }
 
   } else {
     return res.status(400).json({ message: 'Not Login' });
@@ -84,17 +96,16 @@ module.exports.votePost = async (req, res) => {
 module.exports.upVotesPost = async (req, res) => {
 
   const { _id } = req.body;
-  console.log(req.body);
 
   if (_id) {
 
     const coder = await Contestant.findById(_id);
 
-    const {votedBy} = coder;
+    const { votedBy } = coder;
 
     console.log(votedBy);
 
-return res.json({ votedBy: votedBy, name:coder.name });
+    return res.json({ votedBy: votedBy, name: coder.name });
   } else {
     return res.status(400).json({ message: 'No id provided' });
   }

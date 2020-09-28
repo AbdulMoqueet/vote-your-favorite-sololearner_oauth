@@ -55,7 +55,7 @@ const Home = () => {
 
     const profileHandler = () => {
 
-        if(!appContext.isLogin){
+        if (!appContext.isLogin) {
             animateScroll.scrollToBottom();
             return;
         }
@@ -64,7 +64,7 @@ const Home = () => {
     }
 
     const closeProfile = (e) => {
-        if (e.target.className === 'profile' || e.target.className=== 'profile__list logout')
+        if (e.target.className === 'profile' || e.target.className === 'profile__list logout')
             setProfile(false);
     }
 
@@ -119,24 +119,26 @@ const Home = () => {
         axios
             .post("/api/vote", { _id })
             .then((res) => {
-
                 setContestant(res.data.contestants);
+                setAppContext({
+                    ...appContext,
+                    isLoading: false,
+                    user: res.data.user
+                })
 
                 toast.success(`Voted for: ${confirmPopup.coder.name} done`);
 
             })
             .catch(err => {
-                setAlertPopup({
-                    isOpen: true,
-                    title: 'You have voted already',
-                    msg: `You have voted already for: ${err.response.data.votedFor} \n\n You can only vote once.`,
-                    scroll: false
-                });
-            })
-            .finally(() => {
                 setAppContext({
                     ...appContext,
                     isLoading: false
+                });
+                setAlertPopup({
+                    isOpen: true,
+                    title: 'You have voted already',
+                    msg: `You have voted already for: '${err.response.data.votedFor}' You can only vote once.`,
+                    scroll: false
                 });
             });
 
@@ -189,7 +191,8 @@ const Home = () => {
                         />;
                     })}
 
-                    <SignInWithGoogle />
+                    {contestant.length !== 0 ? <SignInWithGoogle /> : null}
+
 
                 </div>
 

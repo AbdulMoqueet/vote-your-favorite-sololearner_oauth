@@ -9,6 +9,7 @@ const Details = (props) => {
     const [appContext, setAppContext] = useContext(AppContext);
     const [votedBy, setVotedBy] = useState([]);
     const [coderName, setCoderName] = useState('Loading...');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -26,7 +27,7 @@ const Details = (props) => {
                     ...appContext,
                     isLoading: false
                 });
-                setCoderName(res.data.name+' votes');
+                setCoderName(res.data.name + "'s votes");
             })
             .catch(err => {
                 console.error(err);
@@ -35,6 +36,9 @@ const Details = (props) => {
                     isLoading: false
                 });
                 setCoderName('Wrong Id');
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, []);
 
@@ -56,6 +60,10 @@ const Details = (props) => {
                     dp={voter.dp}
                     name={voter.name}
                     at={voter.votedAt} />)}
+
+                {votedBy.length === 0 ? <div className="votes__no-votes">
+                    {loading ? 'Loading...' : <React.Fragment> No Votes Yet :/ <br /> Be the first one to vote ^_^ </React.Fragment>}
+                </div> : null}
 
             </div>
 

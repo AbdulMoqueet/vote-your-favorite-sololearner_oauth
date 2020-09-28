@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import googleLogo from "../../resources/google_logo.webp";
 import { AppContext } from '../../context/AppContext';
 import axios from "axios";

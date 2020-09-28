@@ -5,7 +5,7 @@ require('dotenv').config();
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const apiRoutes = require('./routes/apiRoutes');
-
+const initialData = require('./utils/initialData');
 
 const app = express();
 
@@ -41,63 +41,13 @@ mongoose
     .catch(err => console.error(err));
 
 
-// const arr = [
-//     {
-//         soloId: '12942084',
-//         name: 'Aakaanksha 💕'
-//     },
-//     {
-//         soloId: '4586359',
-//         name: 'Serena Yvonne'
-//     },
-//     {
-//         soloId: '12731601',
-//         name: 'Man Of Action'
-//     },
-//     {
-//         soloId: '5371585',
-//         name: 'Sick L̲̅i̲̅n̲̅e̲̅ B̶r̶o̶🌡️'
-//     },
-//     {
-//         soloId: '4354920',
-//         name: 'Calviղ'
-//     },
-//     {
-//         soloId: '197327',
-//         name: 'Burey'
-//     },
-//     {
-//         soloId: '2551505',
-//         name: 'Nikolay Nachev'
-//     },
-//     {
-//         soloId: '8518623',
-//         name: 'ChillPill'
-//     },
-//     {
-//         soloId: '7038378',
-//         name: 'Arb Rahim Badsa'
-//     },
-//     {
-//         soloId: '12447674',
-//         name: 'NiKi🌸 SY💕'
-//     },
-//     {
-//         soloId: '8175030',
-//         name: 'Mitali'
-//     }
-// ];
-
-//     Contestant.insertMany(arr, function(error, docs) {
-//         if(error)
-//         console.log(error);
-//         else
-//         console.log('saved...');
-//     });
 
 // if (process.env.NODE_ENV === 'production') {
 app.use(express.static('./client/build'));
 // }
+
+// <---------- Uncomment for Initial one time data.
+//initialData();  
 
 // app.use((req, res) => {
 //     res.status(404).send('404 Not Found!');
