@@ -5,7 +5,7 @@ require('dotenv').config();
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const apiRoutes = require('./routes/apiRoutes');
-const Contestant = require('./models/Contestant');
+
 
 const app = express();
 
@@ -96,7 +96,7 @@ mongoose
 //     });
 
 // if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('./client/build'));
+app.use(express.static('./client/build'));
 // }
 
 // app.use((req, res) => {

@@ -2,6 +2,8 @@
 @import "variables";
 @import "loader";
 @import "home";
+@import "details";
+@import "profile";
 @import "footer";
 @import "confirm-popup";
 @import "media_queries";
@@ -21,7 +23,8 @@ body {
   background: #fff;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
   margin: 2rem 0;
-  padding: 12px 0;
+  padding: 12px;
+  margin-bottom: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;

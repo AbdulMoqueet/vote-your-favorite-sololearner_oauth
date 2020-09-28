@@ -1,19 +1,23 @@
 @media only screen and (max-width: 420px) {
-
-    .confirm-popup{
-
-        &__box{
-            width: 85%;
-        }
-
-        &__button-holder{
-            justify-content: center;
-        }
-
-        &__confirm{
-            margin: 0;
-        }
-
+  .confirm-popup {
+    &__box {
+      width: 85%;
     }
 
+    &__button-holder {
+      justify-content: center;
+    }
+
+    &__confirm {
+      margin: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .profile {
+    &__box {
+      top: 20px;
+    }
+  }
 }

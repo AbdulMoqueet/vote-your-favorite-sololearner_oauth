@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const { contestantGet, userGet, votePost } = require('../controllers/apiController');
+const { contestantGet, userGet, votePost, upVotesPost } = require('../controllers/apiController');
 
 
 const router = Router();
@@ -14,8 +14,9 @@ router.get("/api/user/signout", (req, res) => {
 
 
 router.get("/api/contestants", contestantGet);
-
 router.post("/api/vote", votePost);
+router.post("/api/upvotes", upVotesPost);
+
 
 
 

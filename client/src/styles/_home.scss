@@ -1,8 +1,7 @@
 .home {
   min-height: 100vh;
   .top {
-    
-    .top-login{
+    .top-login {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -21,14 +20,12 @@
       }
 
       &__profile {
-        img{
+        img {
           width: 40px;
           border-radius: 50%;
         }
       }
-
     }
-
   }
 
   &__side-theme {
@@ -52,16 +49,22 @@
       border-radius: 10px;
       display: flex;
       align-items: center;
+      margin-top: 1.5rem;
+
+      &:first-child {
+        margin: 0;
+      }
+
     }
 
-    .mitali{
+    .mitali {
       transform: translate(-1rem);
       background: #000;
       width: 100px;
       height: 100px;
     }
 
-    &__img-box{
+    &__img-box {
       overflow: hidden;
       height: 70px;
       width: 70px;
@@ -101,4 +104,10 @@
     }
   }
 
+  .sort {
+    color: $grey;
+    font-size: 12px;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+  }
 }

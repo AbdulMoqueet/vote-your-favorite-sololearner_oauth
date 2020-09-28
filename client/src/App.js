@@ -21,7 +21,6 @@ function App() {
     axios
       .get('/api/user')
       .then(res => {
-        console.log(res.data);
         setAppContext({ ...appContext, isLoading: false, isLogin: true, user: res.data.user })
       })
       .catch(err => {
@@ -40,9 +39,14 @@ function App() {
         <Loader />
         <Switch>
 
-          <Route path="/" exact render={(props) => <Home {...props} />} />
-          <Route path="/details" exact render={(props) => <Details {...props} />} />
+          <Route path="/" exact>
+            <Home />
+          </Route>
 
+          <Route
+              path="/details/:_id" exact
+              render={(props) => <Details {...props} />} />
+          
         </Switch>
         <Footer />
       </Router>
