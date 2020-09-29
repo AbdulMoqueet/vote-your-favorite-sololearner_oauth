@@ -14,7 +14,6 @@ const Details = (props) => {
 
     useEffect(() => {
 
-        console.log('Details Effect');
         document.body.style.overflow = 'visible';
 
         setAppContext({

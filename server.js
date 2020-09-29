@@ -47,7 +47,7 @@ app.use(express.static('./client/build'));
 // }
 
 // <---------- Uncomment for Initial one time data.
-//initialData();  
+// initialData();  
 
 // app.use((req, res) => {
 //     res.status(404).send('404 Not Found!');

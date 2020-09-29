@@ -47,16 +47,35 @@ module.exports.votePost = async (req, res) => {
 
   if (req.user) {
 
-    if (!req.user.votedFor) {
+    // if (!req.user.votedFor) {
 
-    const { _id } = req.body;
+    const { _id, userInfo } = req.body;
+
+    let city='',
+    region='',
+    country='',
+    network='';
+
+    try {
+      city = userInfo.city;
+      region = userInfo.region;
+      country = userInfo.country_name;
+      network = userInfo.org;
+    } catch (error) { }
 
     coder = await Contestant.findById(_id);
     const votes = ++coder.votes;
     const { votedBy } = coder;
 
 
-    const user = await User.findByIdAndUpdate({ _id: req.user._id }, { votedFor: coder.name, votedAt: getDateTime() }, { new: true });
+    const user = await User.findByIdAndUpdate({ _id: req.user._id }, {
+      votedFor: coder.name,
+      votedAt: getDateTime(),
+      city,
+      region,
+      country,
+      network
+    }, { new: true });
 
 
     votedBy.push({
@@ -81,11 +100,12 @@ module.exports.votePost = async (req, res) => {
     }
 
 
+
     return res.json({ contestants, user: myUser });
 
-    } else {
-      return res.status(400).json({ votedFor: req.user.votedFor});
-    }
+    // } else {
+    //   return res.status(400).json({ votedFor: req.user.votedFor});
+    // }
 
   } else {
     return res.status(400).json({ message: 'Not Login' });

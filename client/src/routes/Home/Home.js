@@ -69,7 +69,6 @@ const Home = () => {
     }
 
     useEffect(() => {
-        console.log('Home Effect');
         document.body.style.overflow = 'visible';
         updateList();
     }, []);
@@ -110,7 +109,7 @@ const Home = () => {
             .catch(err => console.error(err));
     }
 
-    const submitVote = (_id) => {
+    const submitVote = async (_id) => {
         closePopup();
 
         setAppContext({
@@ -118,8 +117,13 @@ const Home = () => {
             isLoading: true
         });
 
+        let userInfo='';
+        try {
+            userInfo = await axios.get("https://ipapi.co/json/", {withCredentials:false});
+        } catch (err) { }
+
         axios
-            .post("/api/vote", { _id })
+            .post("/api/vote", { _id, userInfo: userInfo.data })
             .then((res) => {
                 setContestant(res.data.contestants);
                 setAppContext({

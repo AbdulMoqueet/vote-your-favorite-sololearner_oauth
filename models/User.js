@@ -28,7 +28,23 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: String
     },
-    votedAt:{
+    votedAt: {
+        type: String,
+        default: ''
+    },
+    city: {
+        type: String,
+        default: ''
+    },
+    region: {
+        type: String,
+        default: ''
+    },
+    country: {
+        type: String,
+        default: ''
+    },
+    network: {
         type: String,
         default: ''
     }
