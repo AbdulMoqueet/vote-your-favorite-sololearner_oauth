@@ -118,9 +118,9 @@ const Home = () => {
             isLoading: true
         });
 
-        let userInfo='';
+        let userInfo = '';
         try {
-            userInfo = await axios.get("https://ipapi.co/json/", {withCredentials:false});
+            userInfo = await axios.get("https://ipapi.co/json/", { withCredentials: false });
         } catch (err) { }
 
         axios
@@ -198,9 +198,11 @@ const Home = () => {
                         />;
                     })}
 
-                    {contestant.length !== 0 ? <SignInWithGoogle /> : null}
-
-                    <YoutubeBtn />
+                    {contestant.length !== 0 ?
+                        <React.Fragment>
+                            <SignInWithGoogle /> <YoutubeBtn />
+                        </React.Fragment>
+                        : null}
 
                 </div>
 
