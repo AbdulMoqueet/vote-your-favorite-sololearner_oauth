@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import defaultUserDp from "../../resources/default_user.png";
 import Profile from '../../components/profile/Profile';
+import YoutubeBtn from "../../components/youtubeButton/YoutubeBtn";
 
 let selectedIndex = 0;
 
@@ -199,6 +200,7 @@ const Home = () => {
 
                     {contestant.length !== 0 ? <SignInWithGoogle /> : null}
 
+                    <YoutubeBtn />
 
                 </div>
 
