@@ -47,7 +47,7 @@ module.exports.votePost = async (req, res) => {
 
   if (req.user) {
 
-    // if (!req.user.votedFor) {
+    if (!req.user.votedFor) {
 
     const { _id, userInfo } = req.body;
 
@@ -103,9 +103,9 @@ module.exports.votePost = async (req, res) => {
 
     return res.json({ contestants, user: myUser });
 
-    // } else {
-    //   return res.status(400).json({ votedFor: req.user.votedFor});
-    // }
+    } else {
+      return res.status(400).json({ votedFor: req.user.votedFor});
+    }
 
   } else {
     return res.status(400).json({ message: 'Not Login' });
