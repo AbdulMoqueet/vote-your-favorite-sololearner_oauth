@@ -3,7 +3,7 @@ import React from 'react';
 const YoutubeBtn = () => {
 
     const openYoutube = () => {
-        window.location.href = 'https://youtu.be/lSOyqjDIDAA';
+        window.open('https://youtu.be/lSOyqjDIDAA', '_blank');
     }
 
     return (

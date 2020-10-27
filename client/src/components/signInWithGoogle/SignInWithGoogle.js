@@ -16,7 +16,7 @@ const SignInWithGoogle = () => {
                 .catch(err => setAppContext({ ...appContext, isLoading: false }))
         else
             // window.location.href = 'http://localhost:5000/auth/google';
-            window.location.href = 'https://vote-your-fav-sololearner.herokuapp.com/auth/google';
+            window.open('https://vote-your-fav-sololearner.herokuapp.com/auth/google', '_blank');
     }
 
     return (
